@@ -48,12 +48,24 @@ const createEntry = async (title, date, author, input, output) => {
 }
 
 
-// RETRIEVE models *****************************************
+// RETRIEVE models 
 // Retrieve based on a filter and return a promise.
 const retrieveEntries = async (filter) => {
     const query = Entry.find(filter);
     return query.exec();
 }
 
+// RETRIEVE entry by id 
+const retrieveEntryById = async (_id) => {
+    const query = Entry.findById(_id);
+    return query.exec();
+}
 
-export { createEntry, retrieveEntries };
+// DELETE entry by id 
+const deleteEntryById = async (_id) => {
+    const query = await Entry.deleteOne({ _id: _id });
+    return query.deletedCount;
+}
+
+
+export { createEntry, retrieveEntries, retrieveEntryById, deleteEntryById };

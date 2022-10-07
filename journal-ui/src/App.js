@@ -10,15 +10,14 @@ import Nav from './components/Nav';
 function App() {
   return (
     <div className="App">
-      <header>This is the Header</header>
-
+      <h1>Journal</h1>
       <BrowserRouter>
         <Nav></Nav>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/add-entry" element={<AddEntryPage />} />
-          <Route path="/view-entries" element={<ViewEntriesPage />} />
-
+          <Route path="/entries" element={<ViewEntriesPage />} />
+          {/* <Route path="/entries/:_id" element={<ViewEntriesPage />} /> */}
 
         </Routes>
       </BrowserRouter>

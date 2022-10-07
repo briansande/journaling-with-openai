@@ -6,7 +6,7 @@ function Nav() {
         <>
             <nav>
                 <Link to="/" className="navLink">Home</Link>
-                <Link to="/view-entries" className="navLink">View Entries Page</Link>
+                <Link to="/entries" className="navLink">View Entries Page</Link>
                 <Link to="/add-entry" className="navLink">Add Entry Page</Link>
             </nav>
         </>

@@ -4,7 +4,7 @@ import React from "react";
 function AddEntryPage() {
     return (
         <>
-            <h1>Welcome to the Open-AI AddEntryPage</h1>
+            <h2>Welcome to the Open-AI AddEntryPage</h2>
         </>
     )
 }
