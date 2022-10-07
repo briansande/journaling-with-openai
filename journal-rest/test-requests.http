@@ -1,0 +1,30 @@
+###
+POST http://localhost:3000/journal HTTP/1.1
+content-type: application/json
+
+{
+    "title": "My first journal entry",
+    "date": "2019-01-01",
+    "author": "John Doe",
+    "input": "This is my first journal entry. I'm so excited!",
+    "output": "I'm so excited!"
+
+}
+
+###
+POST http://localhost:3000/journal HTTP/1.1
+content-type: application/json
+
+{
+    "title": "My SECOND journal entry",
+    "date": "2019-01-02",
+    "author": "John Doe",
+    "input": "This is my second journal entry. I'm so excited!",
+    "output": "I'm so excited!"
+
+}
+
+
+
+###
+GET http://localhost:3000/journal HTTP/1.1
