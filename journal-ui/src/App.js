@@ -17,7 +17,6 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/add-entry" element={<AddEntryPage />} />
           <Route path="/entries" element={<ViewEntriesPage />} />
-          {/* <Route path="/entries/:_id" element={<ViewEntriesPage />} /> */}
 
         </Routes>
       </BrowserRouter>

@@ -2,13 +2,22 @@ import 'dotenv/config';
 import express from 'express';
 import * as journal from './journal-model.mjs';
 
+import { Configuration, OpenAIApi } from "openai";
+const configuration = new Configuration({
+    apiKey: process.env.OPENAI_API_KEY,
+    organization: "org-ivUBbysnLJ0yi98W15xrPMGD"
+});
+const openai = new OpenAIApi(configuration);
+
+
+
 
 const PORT = process.env.PORT;
 const app = express();
 app.use(express.json());
 
 // CREATE controller 
-app.post('/journal', async (req, res) => {
+app.post('/entries', async (req, res) => {
     journal.createEntry(
         req.body.title,
         req.body.date,
@@ -21,6 +30,8 @@ app.post('/journal', async (req, res) => {
         res.status(400).json({ error: 'Creation of a document failed due to invalid syntax.' });
     });
 });
+
+
 // GET entry by id
 app.get('/entries/:_id', async (req, res) => {
     const entryId = req.params._id;
@@ -49,6 +60,24 @@ app.get('/entries', async (req, res) => {
             res.status(500).json({ error: '500:Connection to the server failed.' });
         });
 });
+
+
+// GET entries controller
+app.get('/output', async (req, res) => {
+
+
+    const response = await openai.createCompletion({
+        model: "text-davinci-002",
+        prompt: "How tall is the empire state building?",
+        max_tokens: 100,
+        temperature: 0,
+    })
+    const data = await response.data;
+    res.send(data)
+
+
+});
+
 
 
 
