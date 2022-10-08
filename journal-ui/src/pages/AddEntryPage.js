@@ -30,13 +30,14 @@ function AddEntryPage() {
     }
 
     // Get output from the OpenAI API running through server
-    const getOutput = async () => {
-        const response = await fetch("/output");
+    const getOpenAIOutput = async () => {
+        const response = await fetch("/output", {
+            method: "POST",
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ "prompt": input })
+        });
         const data = await response.json()
-        console.log(data)
-
-
-
+        console.log(data.choices[0].text)
     }
 
 
@@ -62,7 +63,7 @@ function AddEntryPage() {
 
             <button onClick={addEntry}>Submit</button>
 
-            <button onClick={getOutput}> GET OPEN AI</button>
+            <button onClick={getOpenAIOutput}> GET OPEN AI</button>
 
         </>
     )

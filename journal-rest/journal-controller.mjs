@@ -63,12 +63,13 @@ app.get('/entries', async (req, res) => {
 
 
 // GET entries controller
-app.get('/output', async (req, res) => {
+app.post('/output', async (req, res) => {
+
 
 
     const response = await openai.createCompletion({
         model: "text-davinci-002",
-        prompt: "How tall is the empire state building?",
+        prompt: req.body.prompt,
         max_tokens: 100,
         temperature: 0,
     })

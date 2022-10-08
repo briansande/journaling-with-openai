@@ -21,7 +21,8 @@ function ViewEntriesPage() {
     // Load the entries from the database
     const loadEntries = async () => {
         const response = await fetch("/entries");
-        setEntries(response);
+        const data = await response.json();
+        setEntries(data);
     };
 
 
