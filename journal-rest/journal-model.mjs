@@ -51,7 +51,7 @@ const createEntry = async (title, date, author, input, output) => {
 // RETRIEVE models 
 // Retrieve based on a filter and return a promise.
 const retrieveEntries = async (filter) => {
-    const query = Entry.find(filter);
+    const query = Entry.find(filter).sort({ date: -1 });
     return query.exec();
 }
 

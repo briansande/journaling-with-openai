@@ -65,13 +65,12 @@ app.get('/entries', async (req, res) => {
 // GET entries controller
 app.post('/output', async (req, res) => {
 
-
-
+    console.log(req.body.prompt);
     const response = await openai.createCompletion({
         model: "text-davinci-002",
         prompt: req.body.prompt,
-        max_tokens: 100,
-        temperature: 0,
+        max_tokens: 1000,
+        temperature: 1,
     })
     const data = await response.data;
     res.send(data)

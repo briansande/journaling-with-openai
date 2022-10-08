@@ -1,3 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&family=Neucha&display=swap');
+/* font-family: 'Comfortaa', cursive;
+font-family: 'Neucha', cursive; */
+
+body {
+  color: greenyellow;
+  background-color: black;
+  margin: 10px;
+  font-family: 'Comfortaa', cursive;
+
+}
+
 nav a {
   margin: 0 10px;
   padding: 5px;
@@ -6,4 +18,43 @@ nav a {
 
 nav a:hover {
   background-color: grey;
+}
+
+input {
+  height: 20px;
+  padding: 3px 0;
+  width: 100px;
+  margin: 10px 0;
+}
+
+
+.input-prompt {}
+
+
+.input-prompt p {
+  display: inline-block;
+  min-width: 150px;
+}
+
+.dayDiv {
+  border: solid black 2px;
+  width: 50%;
+  margin: 10px;
+}
+
+.entry {
+  color: greenyellow;
+  background-color: black;
+  border: solid black 3px;
+  margin: 10px;
+  padding: 10px;
+}
+
+.entry h2 {
+  margin: 0;
+
+}
+
+.entry p {
+  margin: 0;
 }
