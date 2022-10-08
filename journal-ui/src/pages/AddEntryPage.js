@@ -1,47 +1,72 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
+import data from '@emoji-mart/data'
+import Picker from '@emoji-mart/react'
 
 
 
 function AddEntryPage() {
+    // const textbox = null;
+    const [textBox, setTextBox] = useState("");
 
-    // const [title, setTitle] = useState("");
-    // const [author, setAuthor] = useState("");
+    const [state, setState] = useState({
+        "feelingMorning": "",
+        "activityMorning": "",
+        "foodMorning": "",
+        "feelingAfternoon": "",
+        "activityAfternoon": "",
+        "foodAfternoon": "",
+        "feelingEvening": "",
+        "activityEvening": "",
+        "foodEvening": "",
+        "feelingNight": "",
+        "activityNight": "",
+        "foodNight": "",
+        "overallFeeling": "",
 
-    const [feelingMorning, setFeelingMorning] = useState("");
-    const [activityMorning, setActivityMorning] = useState("");
-    const [foodMorning, setFoodMorning] = useState("");
 
-    // const [feelingAfternoon, setFeelingAfternoon] = useState("");
-    // const [activityAfternoon, setActivityAfternoon] = useState("");
-    // const [foodAfternoon, setFoodAfternoon] = useState("");
-
-    // const [feelingEvening, setFeelingEvening] = useState("");
-    // const [activityEvening, setActivityEvening] = useState("");
-    // const [foodEvening, setFoodEvening] = useState("");
-
-    // const [feelingNight, setFeelingNight] = useState("");
-    // const [activityNight, setActivityNight] = useState("");
-    // const [foodNight, setFoodNight] = useState("");
-
-    const [overallFeeling, setOverallFeeling] = useState("");
+    });
 
     const [needInspiration, setNeedInspiration] = useState("");
 
 
 
 
+    const onEmojiClick = (emojiObject) => {
+        const { selectionStart, selectionEnd, name } = textBox
+
+        const curText = state[name]
+        const newText = curText.slice(0, selectionStart) + emojiObject.native + curText.slice(selectionEnd)
+        const newState = { ...state, [name]: newText }
+        setState(newState)
+        textBox.focus()
+
+    };
+
 
     const navigate = useNavigate();
 
 
+
+
     const addEntry = async () => {
 
-        const input = `Write a long diary entry based on these emojis (don't use the emojis in your entry): 
-        Morning Feeling: ${feelingMorning}
-        Morning Activity: ${activityMorning}
-        Morning Food: ${foodMorning}  `;
+        const input = `Write a long diary entry based on these emojis (don't use the emojis in your entry):
+        Morning Feeling: ${state.feelingMorning}
+        Morning Activity: ${state.activityMorning}
+        Morning Food: ${state.foodMorning}
+        Afternoon Feeling: ${state.feelingAfternoon}
+        Afternoon Activity: ${state.activityAfternoon}
+        Afternoon Food: ${state.foodAfternoon}
+        Evening Feeling: ${state.feelingEvening}
+        Evening Activity: ${state.activityEvening}
+        Evening Food: ${state.foodEvening}
+        Night Feeling: ${state.feelingNight}
+        Night Activity: ${state.activityNight}
+        Night Food: ${state.foodNight}
+        Overall Feeling: ${state.overallFeeling}
+        `;
 
         const date = new Date();
 
@@ -75,101 +100,151 @@ function AddEntryPage() {
         navigate("/entries");
     }
 
+    const consoleLogInput = () => {
+        const input = `Write a long diary entry based on these emojis (don't use the emojis in your entry):
+        Morning Feeling: ${state.feelingMorning}
+        Morning Activity: ${state.activityMorning}
+        Morning Food: ${state.foodMorning}
+        Afternoon Feeling: ${state.feelingAfternoon}
+        Afternoon Activity: ${state.activityAfternoon}
+        Afternoon Food: ${state.foodAfternoon}
+        Evening Feeling: ${state.feelingEvening}
+        Evening Activity: ${state.activityEvening}
+        Evening Food: ${state.foodEvening}
+        Night Feeling: ${state.feelingNight}
+        Night Activity: ${state.activityNight}
+        Night Food: ${state.foodNight}
+        Overall Feeling: ${state.overallFeeling}
+        `;
+
+        console.log(input)
+    }
+
+
+    const handleChanges = (e) => {
+        const { name, value } = e.target;
+        const newState = { ...state, [name]: value };
+        setState(newState);
+    }
+
+    const handleClick = (e) => {
+        setTextBox(e.target)
+    }
 
 
 
     return (
         <>
             <h2>Welcome to the Open-AI AddEntryPage</h2>
+            <div className="EmojiPicker">
+                <Picker data={data} onEmojiSelect={onEmojiClick} />
+            </div>
 
             <div className="dayDiv">
-                {/* ------------- Morning ------------- */}
                 <div className="input-prompt">
                     <p>Morning Feeling:</p>
                     <input type="text"
-                        value={feelingMorning}
+                        value={state.feelingMorning}
+                        name="feelingMorning"
                         placeholder=""
-                        onChange={(e) => setFeelingMorning(e.target.value)}
+                        onChange={handleChanges}
+                        onFocus={handleClick}
+
                     />
                 </div>
 
                 <div className="input-prompt">
                     <p>Morning Activity:</p>
                     <input type="text"
-                        value={activityMorning}
-
+                        value={state.activityMorning}
                         placeholder=""
-                        onChange={(e) => setActivityMorning(e.target.value)}
+                        name="activityMorning"
+                        onChange={handleChanges}
+                        onFocus={handleClick}
                     />
                 </div>
-
                 <div className="input-prompt">
                     <p>Morning Food:</p>
                     <input type="text"
-
-                        value={foodMorning}
+                        value={state.foodMorning}
                         placeholder=""
-                        onChange={(e) => setFoodMorning(e.target.value)}
+                        name="foodMorning"
+                        onChange={handleChanges}
+                        onFocus={handleClick}
                     />
                 </div>
             </div>
-            {/* 
+
+
             <div className="dayDiv">
                 <div className="input-prompt">
                     <p>Afternoon Feeling:</p>
                     <input type="text"
-                        value={feelingAfternoon}
+                        value={state.feelingAfternoon}
                         placeholder=""
-                        onChange={(e) => setFeelingAfternoon(e.target.value)}
+                        name="feelingAfternoon"
+                        onChange={handleChanges}
+                        onFocus={handleClick}
                     />
                 </div>
 
                 <div className="input-prompt">
                     <p>Afternoon Activity:</p>
                     <input type="text"
-                        value={activityAfternoon}
+                        value={state.activityAfternoon}
                         placeholder=""
-                        onChange={(e) => setActivityAfternoon(e.target.value)}
+                        name="activityAfternoon"
+                        onChange={handleChanges}
+                        onFocus={handleClick}
                     />
                 </div>
 
                 <div className="input-prompt">
                     <p>Afternoon Food:</p>
                     <input type="text"
-                        value={foodAfternoon}
+                        value={state.foodAfternoon}
                         placeholder=""
-                        onChange={(e) => setFoodAfternoon(e.target.value)}
+                        name="foodAfternoon"
+                        onChange={handleChanges}
+                        onFocus={handleClick}
                     />
                 </div>
+
             </div>
 
 
             <div className="dayDiv">
-
                 <div className="input-prompt">
                     <p>Evening Feeling:</p>
                     <input type="text"
-                        value={feelingEvening}
+                        value={state.feelingEvening}
                         placeholder=""
-                        onChange={(e) => setFeelingEvening(e.target.value)}
+                        name="feelingEvening"
+                        onChange={handleChanges}
+                        onFocus={handleClick}
                     />
                 </div>
 
                 <div className="input-prompt">
                     <p>Evening Activity:</p>
                     <input type="text"
-                        value={activityEvening}
+                        value={state.activityEvening}
                         placeholder=""
-                        onChange={(e) => setActivityEvening(e.target.value)}
+                        name="activityEvening"
+                        onChange={handleChanges}
+                        onFocus={handleClick}
                     />
                 </div>
 
                 <div className="input-prompt">
                     <p>Evening Food:</p>
                     <input type="text"
-                        value={foodEvening}
+
+                        value={state.foodEvening}
                         placeholder=""
-                        onChange={(e) => setFoodEvening(e.target.value)}
+                        name="foodEvening"
+                        onChange={handleChanges}
+                        onFocus={handleClick}
                     />
                 </div>
             </div>
@@ -179,44 +254,55 @@ function AddEntryPage() {
                 <div className="input-prompt">
                     <p>Night Feeling:</p>
                     <input type="text"
-                        value={feelingNight}
+                        value={state.feelingNight}
                         placeholder=""
-                        onChange={(e) => setFeelingNight(e.target.value)}
+                        name="feelingNight"
+                        onChange={handleChanges}
+                        onFocus={handleClick}
                     />
-
                 </div>
 
                 <div className="input-prompt">
                     <p>Night Activity:</p>
                     <input type="text"
-                        value={activityNight}
+
+                        value={state.activityNight}
                         placeholder=""
-                        onChange={(e) => setActivityNight(e.target.value)}
+                        name="activityNight"
+                        onChange={handleChanges}
+                        onFocus={handleClick}
                     />
                 </div>
 
                 <div className="input-prompt">
                     <p>Night Food:</p>
                     <input type="text"
-                        value={foodNight}
+                        value={state.foodNight}
                         placeholder=""
-                        onChange={(e) => setFoodNight(e.target.value)}
+                        name="foodNight"
+                        onChange={handleChanges}
+                        onFocus={handleClick}
                     />
                 </div>
+
             </div>
- */}
+
 
 
             <div className="dayDiv">
                 <div className="input-prompt">
                     <p>Overall Feeling:</p>
                     <input type="text"
-                        value={overallFeeling}
+                        value={state.overallFeeling}
                         placeholder=""
-                        onChange={(e) => setOverallFeeling(e.target.value)}
+                        name="overallFeeling"
+                        onChange={handleChanges}
+                        onFocus={handleClick}
                     />
                 </div>
 
+
+                {/* 
                 <div>
                     Add affirmations:
                     <input type="checkbox"
@@ -224,7 +310,7 @@ function AddEntryPage() {
                         onChange={(e) => setNeedInspiration(e.target.value)}
 
                     />
-                </div>
+                </div> */}
             </div>
 
 
@@ -240,7 +326,8 @@ function AddEntryPage() {
                 onChange={(e) => setInput(e.target.value)}
             /> */}
 
-            <button onClick={addEntry}>Submit</button>
+            {/* <button onClick={addEntry}>Submit</button> */}
+            <button onClick={consoleLogInput}>Submit</button>
 
 
         </>
