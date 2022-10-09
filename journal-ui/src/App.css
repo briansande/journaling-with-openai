@@ -1,13 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&family=Neucha&display=swap');
+
 /* font-family: 'Comfortaa', cursive;
 font-family: 'Neucha', cursive; */
+
 
 body {
   color: greenyellow;
   background-color: black;
-  margin: 10px;
+  margin: 0;
   font-family: 'Comfortaa', cursive;
 
+
+}
+
+nav {
+  padding: 20px;
+  background-color: aliceblue;
+  margin-bottom: 20px;
 }
 
 nav a {
@@ -20,33 +29,115 @@ nav a:hover {
   background-color: grey;
 }
 
-input {
-  height: 20px;
-  padding: 3px 0;
-  width: 100px;
-  margin: 10px 0;
+
+
+.input-prompt {
+  width: 200px;
+  display: inline-block;
+  text-align: center;
+
+
 }
-
-
-.input-prompt {}
 
 
 .input-prompt p {
-  display: inline-block;
-  min-width: 150px;
+  min-width: 100px;
 }
 
+input {
+  height: 60px;
+  padding: 3px 0;
+  width: 150px;
+  margin: 10px 0;
+  font-size: 2em;
+  text-align: center;
+}
+
+
+
 .dayDiv {
-  border: solid black 2px;
-  width: 50%;
+  border: solid rgb(16, 246, 85) 2px;
+  width: 100%;
+  margin: 10px 0;
+  padding: 10px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.entry-form {
+  width: 800px;
+  display: inline-block;
+  vertical-align: middle;
+
+}
+
+.EmojiPicker {
+  display: inline-block;
+  vertical-align: middle;
+
+}
+
+.entry-wrapper {
+  /* center align horizonal */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+
+}
+
+.entry-wrapper input {
+  /* black with green text */
+  background-color: rgb(48, 48, 48);
+}
+
+.entry-wrapper input:focus {
+  /* black with green text */
+  background-color: white;
+}
+
+
+.entry-wrapper button {
+  /* black with green text */
+  width: 100%;
+  height: 50px;
+
+  font-family: 'Comfortaa', cursive;
+  font-size: 1em;
+  font-weight: 700;
+
+  background-color: black;
+  color: greenyellow;
+  border: solid green 3px;
+}
+
+.entry-wrapper button:hover {
+  background-color: rgb(13, 46, 13);
+
+
+}
+
+
+.entry-form {
   margin: 10px;
+}
+
+
+.entry-list {
+  /* centered 60% width */
+  width: 60%;
+  margin: 0 auto;
+
 }
 
 .entry {
   color: greenyellow;
   background-color: black;
-  border: solid black 3px;
-  margin: 10px;
+  border: solid green 3px;
+  margin: 30px 0;
   padding: 10px;
 }
 
@@ -57,4 +148,6 @@ input {
 
 .entry p {
   margin: 0;
+  white-space: pre-wrap;
+
 }

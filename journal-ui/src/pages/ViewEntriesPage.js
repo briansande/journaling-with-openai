@@ -35,9 +35,8 @@ function ViewEntriesPage() {
     // Render the entries
     return (
         <>
-            <h2>Welcome to the Open-AI ViewEntriesPage</h2>
+            <h2>journal entries</h2>
 
-            <p>These are the entries:</p>
 
             <EntryList entries={entries} onDelete={onDelete} />
         </>

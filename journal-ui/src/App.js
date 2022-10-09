@@ -10,7 +10,6 @@ import Nav from './components/Nav';
 function App() {
   return (
     <div className="App">
-      <h1>Journal</h1>
       <BrowserRouter>
         <Nav></Nav>
         <Routes>
@@ -25,3 +24,4 @@ function App() {
 }
 
 export default App;
+
