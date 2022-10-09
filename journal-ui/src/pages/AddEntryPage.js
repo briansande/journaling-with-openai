@@ -148,7 +148,7 @@ function AddEntryPage() {
 
     return (
         <>
-            <h2>Add Emojis for each part of your day:</h2>
+            {/* <h2>Add Emojis for each part of your day:</h2> */}
             <div className="entry-wrapper">
                 <div className="entry-form">
                     <div className="dayDiv">
@@ -350,7 +350,7 @@ function AddEntryPage() {
                         data={data}
                         onEmojiSelect={onEmojiClick}
                         theme="dark"
-                        categories={['people', 'animals', 'food', 'activity', 'travel', 'objects', 'symbols', 'flags']}
+                        // categories={['people', 'animals', 'food', 'activity', 'travel', 'objects', 'symbols', 'flags']}
                         emojiButtonSize={40}
                         emojiSize={30}
                         previewPosition="none"

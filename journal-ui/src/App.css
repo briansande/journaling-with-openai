@@ -9,21 +9,90 @@ body {
   background-color: black;
   margin: 0;
   font-family: 'Comfortaa', cursive;
-
-
+  background-image: radial-gradient(rgba(0, 150, 0, 0.275), black 80%);
+  height: 100vh;
+  overflow: hidden;
 }
 
+
+
+
+
+
 nav {
-  padding: 20px;
-  background-color: aliceblue;
+  /* fixed at top of page */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  /* background-color: red; */
+
+  height: 50px;
+  padding: 30px 0 50px;
+  /* background-color: black; */
   margin-bottom: 20px;
+  /* center */
+  display: flex;
+  justify-content: left;
+  align-items: center;
+
 }
 
 nav a {
-  margin: 0 10px;
-  padding: 5px;
+  color: yellowgreen;
+  height: 40px;
+
+  margin: 0 30px;
+  padding: 10px 30px;
   border: solid 2px;
+  text-decoration: none;
+
+
 }
+
+
+
+nav a:first-child {
+  border: none;
+}
+
+nav a:first-child:hover {
+  color: red;
+  background-color: transparent;
+  animation: bounce 2s infinite;
+}
+
+/* animate bouncing up and down */
+@keyframes bounce {
+  0% {
+    transform: translateY(0);
+    transform-origin: bottom;
+  }
+
+  30% {
+    transform: translateY(-5px);
+
+  }
+
+  50% {
+    transform: translateY(-5px) rotate(360deg);
+  }
+
+  70% {
+    transform: translateY(-5px) rotate(360deg);
+
+
+  }
+
+
+  100% {
+    transform: translateY(0) rotate(360deg);
+
+
+
+  }
+}
+
 
 nav a:hover {
   background-color: grey;
@@ -56,14 +125,17 @@ input {
 
 
 .dayDiv {
-  border: solid rgb(16, 246, 85) 2px;
+  border: solid rgb(0, 120, 0) 2px;
   width: 100%;
-  margin: 10px 0;
+  margin: 20px 0;
   padding: 10px;
 
   display: flex;
   justify-content: center;
   align-items: center;
+
+
+  background-color: rgba(0, 255, 0, .1);
 }
 
 
@@ -71,6 +143,8 @@ input {
   width: 800px;
   display: inline-block;
   vertical-align: middle;
+  margin: 0 30px;
+
 
 }
 
@@ -85,6 +159,11 @@ input {
   display: flex;
   justify-content: center;
   align-items: center;
+  max-height: 90vh;
+  margin-top: 10vh;
+
+
+
 
 
 }
@@ -121,16 +200,24 @@ input {
 }
 
 
-.entry-form {
-  margin: 10px;
-}
-
 
 .entry-list {
   /* centered 60% width */
   width: 60%;
   margin: 0 auto;
+  overflow-y: scroll;
+  max-height: 90vh;
+  margin-top: 10vh;
+  padding-bottom: 600px;
 
+  -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 90%);
+  mask-image: linear-gradient(to bottom, black 70%, transparent 90%);
+
+
+}
+
+.entry-list::-webkit-scrollbar {
+  display: none;
 }
 
 .entry {
@@ -150,4 +237,46 @@ input {
   margin: 0;
   white-space: pre-wrap;
 
+}
+
+
+
+.home-heading {
+  font-size: 1.5em;
+  max-height: 90vh;
+  margin-top: 10vh;
+  display: flex;
+  padding: 30px;
+
+
+
+  /* add a slightly glowing drop shadow*/
+  text-shadow: 2px 2px 8px rgba(172, 255, 47, 0.495);
+}
+
+
+
+.deleteDiv {
+  /* center vertically and horizontally with maximum width of 300px*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 200px;
+  margin: 0 auto;
+  padding: 4px;
+  font-size: .8em;
+
+  border: solid 2px green;
+
+}
+
+.deleteDiv:hover {
+  cursor: pointer;
+  color: red;
+  background-color: darkblue;
+}
+
+
+b {
+  color: red;
 }

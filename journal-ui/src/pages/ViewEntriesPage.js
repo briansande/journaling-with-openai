@@ -35,7 +35,8 @@ function ViewEntriesPage() {
     // Render the entries
     return (
         <>
-            <h2>journal entries</h2>
+
+            {/* <h2>journal entries</h2> */}
 
 
             <EntryList entries={entries} onDelete={onDelete} />

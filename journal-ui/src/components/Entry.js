@@ -9,7 +9,8 @@ function Entry({ entry, onDelete }) {
             <h2>Date: {entry.date.split("T")[0]}</h2>
             {/* <p>{entry.input}</p> */}
             <p>{entry.output}</p>
-            <MdDeleteForever onClick={() => onDelete(entry._id)} />
+            <br></br>
+            <div className='deleteDiv' onClick={() => onDelete(entry._id)}><MdDeleteForever className='deleteButton' size={15} />Delete Entry  </div>
         </div>
     )
 }
