@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import LoadingScreen from "../components/LoadingScreen";
+import Nav from "../components/Nav";
+import { useLocation } from "react-router-dom";
 
 import data from '@emoji-mart/data'
 import Picker from '@emoji-mart/react'
@@ -10,7 +12,10 @@ import Picker from '@emoji-mart/react'
 
 
 function AddEntryPage() {
-    // const textbox = null;
+
+    const location = useLocation()
+    const { username } = location.state
+
     const [textBox, setTextBox] = useState("");
     const [loading, setLoading] = useState(false);
 
@@ -81,7 +86,7 @@ function AddEntryPage() {
 
         const date = new Date();
 
-        const author = "Brian"
+        const author = username;
         const title = "Journal Entry"
 
         // Get the response from OpenAI
@@ -108,7 +113,7 @@ function AddEntryPage() {
             alert(`Error adding entry: ${response.status} ${response.statusText}`);
         }
         setLoading(false);
-        navigate("/entries");
+        navigate("/entries", { state: { username } });
     }
 
     const consoleLogInput = () => {
@@ -148,6 +153,8 @@ function AddEntryPage() {
 
     return (
         <>
+            <Nav username={username}></Nav>
+
             {/* <h2>Add Emojis for each part of your day:</h2> */}
             <div className="entry-wrapper">
                 <div className="entry-form">

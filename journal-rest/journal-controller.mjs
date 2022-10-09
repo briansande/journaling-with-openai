@@ -51,7 +51,7 @@ app.get('/entries/:_id', async (req, res) => {
 
 // GET entries controller
 app.get('/entries', async (req, res) => {
-    let filter = {};
+    const filter = { author: req.query.username };
 
     journal.retrieveEntries(filter)
         .then(entries => {

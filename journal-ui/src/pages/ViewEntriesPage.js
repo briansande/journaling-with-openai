@@ -1,8 +1,14 @@
 import React from "react";
 import EntryList from "../components/EntryList";
+import Nav from "../components/Nav";
+import { useLocation } from 'react-router-dom'
+
 
 
 function ViewEntriesPage() {
+
+    const location = useLocation()
+    const { username } = location.state
 
     const [entries, setEntries] = React.useState([]);
 
@@ -20,7 +26,7 @@ function ViewEntriesPage() {
 
     // Load the entries from the database
     const loadEntries = async () => {
-        const response = await fetch("/entries");
+        const response = await fetch("/entries?username=" + username);
         const data = await response.json();
         setEntries(data);
     };
@@ -35,6 +41,7 @@ function ViewEntriesPage() {
     // Render the entries
     return (
         <>
+            <Nav username={username}></Nav>
 
             {/* <h2>journal entries</h2> */}
 
