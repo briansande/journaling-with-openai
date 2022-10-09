@@ -10,7 +10,12 @@ function Entry({ entry, onDelete }) {
             {/* <p>{entry.input}</p> */}
             <p>{entry.output}</p>
             <br></br>
-            <div className='deleteDiv' onClick={() => onDelete(entry._id)}><MdDeleteForever className='deleteButton' size={15} />Delete Entry  </div>
+            <div className='deleteDiv' onClick={() => onDelete(entry._id)}>
+                <span className='deleteSpan'>
+                    {/* <MdDeleteForever className='deleteButton' size={15} /> */}
+                    DEL
+                </span>
+            </div>
         </div>
     )
 }
